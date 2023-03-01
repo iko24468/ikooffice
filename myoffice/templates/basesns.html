@@ -1,0 +1,25 @@
+<!doctype html>
+<html dir="rtl" lang="he">
+
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'snslaw/style.css' %}">
+
+    <title>
+         {% block title %}
+            {{ page_title|default:"שרעבי, נאורי, סנדלר" }}
+
+         {% endblock title %}
+    </title>
+
+</head>
+<body>
+
+    {% block content %}
+    <p>Placeholder text in base template. Replace with page content.</p>
+    {% endblock content %}
+</body>
+
+
+

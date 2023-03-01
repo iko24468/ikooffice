@@ -1,0 +1,68 @@
+<!doctype html>
+{% extends 'basesns.html' %}
+{% load static %}
+
+
+<title>
+     {% block title %}
+        My Snslaw Title
+     {% endblock title %}
+</title>
+
+
+
+
+{% block content %}
+<p>The title of this document is:</p>
+<p id="demo"></p>
+
+<script>
+    document.title = "A new title";
+    document.getElementById("demo").innerHTML = document.title;
+</script>
+
+
+<p>1נסיונות</p>
+<em>נניח</em>
+<strong>נניח</strong>
+<h3>כותרת 3</h3>
+<h4>כותרת 4 </h4>
+<h5>כותרת 5</h5>
+<h6>כותרת 6</h6>
+<time></time>
+
+{% if submitted %}
+    <p class="success">
+       תיק תד נוסף בהצלחה
+        <a href="{% url 'snslaw:mytest1' %}">חזרה </a>
+    </p>
+{% else %}
+
+    <div class="container">
+        <h1>טופס</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+        <div class="form-group">
+            {{ form.first_name }}
+        </div>
+        <div class="form-group">
+            {{ form.mail }}
+        </div>
+
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="שלח">
+    </div>
+    </form>
+</div>
+
+
+{% endif %}
+
+
+
+<footer>
+    <h1>snslaw</h1>
+</footer>
+
+
+{% endblock content %}

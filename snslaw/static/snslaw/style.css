@@ -1,0 +1,96 @@
+
+h1 {
+color: orange;
+font-size: 45px;
+}
+
+h2 {
+color: green;
+font-size: 25px;
+}
+
+h1 a, h2 a {
+    color: red;
+}
+
+.link {
+  padding: 20px 20px;
+  float: center;
+  width: 16%;
+  color: green;
+  font-size: 15px;
+  text-align: center;
+}
+
+.link1 {
+  background-color: white;
+  padding: 10px 30px;
+  float: center;
+  width: 25%;
+  color: red;
+  font-size: 15px;
+  text-align: center;
+}
+
+.column {
+  float: right;
+  width: 16%;
+  color: blue;
+  font-size: 20px;
+  border: 1px solid blue;
+  border-radius: 16px;
+  border-block-color: blue red;
+  background-color: lightblue;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.mail: {
+    text-align: left;
+}
+
+td {text-align: right; direction: ltr;}
+
+.table: {
+  float: center;
+  width: 16%;
+  color: blue;
+  font-size: 20px;
+  border: 1px solid blue;
+  border-radius: 16px;
+  border-block-color: green;
+  background-color: lightblue;
+  text-align: center;
+}
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: 0.4rem 0;
+}
+
+.form-group {
+    background-color: #C25100;
+    margin-top: 0;
+    margin-bottom: 40px;
+    padding: 20px 20px 20px 40px;
+}
+
+.btn-primary:hover {
+    color: #FFFFFF;
+    background-color: blue;
+}
+
+body {
+    background: url(images/background1.gif);
+}

@@ -1,0 +1,61 @@
+{% extends 'basesns.html' %}
+{% load static %}
+{% block title %}עדכון לקוח קיים{% endblock title %}
+
+{% block content %}
+<h1>עדכון לקוח: {{ myclient }}</h1>
+<!--{% if submitted %}-->
+
+<!--{% endif %}-->
+<!--<h1>Update member</h1>-->
+
+<form action="updaterecord/{{ myclient.id }}" method="post" novalidate>
+{% csrf_token %}
+שם פרטי:<br>
+<input name="first" value="{{ myclient.first_name }}">
+<br><br>
+שם משפחה:<br>
+<input name="last" value="{{ myclient.last_name }}">
+<br><br>
+זהות:<br>
+<input name="id_number" value="{{ myclient.id_number }}">
+<br><br>
+טלפון 1:<br>
+<input name="phone1" value="{{ myclient.phone1 }}"><input name="phone1_prefix" value="{{ myclient.phone1_prefix }}">
+<br><br>
+טלפון 2:<br>
+<input name="phone2" value="{{ myclient.phone2 }}"><input name="phone2_prefix" value="{{ myclient.phone2_prefix }}">
+<br><br>
+ תאריך לידה:<br>
+<input name="birth" type="date"  value="{{ myclient.birth_date|date:myclient.birth_date }}" placeholder="{{ myclient.birth_date }}">
+<br><br>
+כתובת:<br>
+<input name="city" value="{{ myclient.address_city }}">רחוב<input name="street" value="{{ myclient.address_street }}">
+    מספר בית<input name="number" value="{{ myclient.address_number }}">תא דואר<input name="pob" value="{{ myclient.address_pob }}">
+    מיקוד<input name="zip" value="{{ myclient.address_zip }}">
+<br><br>
+קופת חולים:<br>
+<input name="kupa" value="{{ myclient.kupa }}">
+<br><br>
+דוא"ל:<br>
+<input name="mail" value="{{ myclient.mail }}">
+<br><br>
+מגדר:<br>
+<!--<select id="gender" name="gender" >-->
+<!--      <option value="{{ myclient.gender }}"></option>-->
+<!--      <option value="male">זכר</option>-->
+<!--      <option value="female">נקבה</option>-->
+
+
+<!--    </select>-->
+<input name="gender" value="{{ myclient.gender }}">
+<br><br>
+<!--שם משפחה:-->
+<!--<td> {{ clnt.address_street }} {{ clnt.address_number }}, {{ clnt.address_city }}, תד {{ clnt.address_pob }} מיקוד-->
+<!--    {{ clnt.address_zip }}-->
+<!--</td>-->
+
+<input type="submit" value="שמור">
+</form>
+
+{% endblock content %}

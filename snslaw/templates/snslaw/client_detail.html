@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% extends 'basesns.html' %}
+{% load static %}
+{% block title %}פרטי לקוח{% endblock title %}
+
+{% block content %}
+<h1>פרטי לקוח: {{ myclient }}</h1>
+
+<div class="table">
+
+
+<table border="1">
+    <tr>
+        <th>מספר לקוח</th>
+        <th>תעודת זהות</th>
+        <th>שם משפחה</th>
+        <th>שם פרטי</th>
+        <th>טלפון 1</th>
+        <th>טלפון 2</th>
+        <th>תאריך לידה</th>
+        <th>כתובת</th>
+        <th>קופת חולים</th>
+        <th>דוא"ל</th>
+        <th>מגדר</th>
+  </tr>
+
+<tr>
+
+<td>{{ myclient.id }}</td>
+<td>{{ myclient.id_number }}</td>
+<td>{{ myclient.last_name }}</td>
+<td>{{ myclient.first_name }}</td>
+<td>{{ myclient.phone1_prefix }}-{{ myclient.phone1 }}</td>
+<td>{{ myclient.phone2_prefix }}-{{ myclient.phone2 }}</td>
+<td>{{ myclient.birth_date }}</td>
+<td> {{ myclient.address_street }} {{ myclient.address_number }}, {{ myclient.address_city }}, תד {{ myclient.address_pob }} מיקוד
+    {{ myclient.address_zip }}
+</td>
+<td>{{ myclient.kupa }}</td>
+<td>{{ myclient.mail }}</td>
+<td>{{ myclient.gender }}</td>
+<!--<td><a href="delete/{{ clnt.id }}">delete</a>-->
+</tr>
+
+</table>
+
+<h2>רשימת תיקים</h2>
+
+<table border="2">
+    <tr>
+        <th>סוג תיק</th>
+        <th>סטטוס</th>
+    </tr>
+
+
+{% for file in client_files %}
+<tr>
+    <td>{{ file.file_header }}</td>
+    <td>{{ file.status }}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+<form action="/snslaw/newfile/{{ myclient.id }}" method="post">
+
+    {% csrf_token %}
+<label for="actions">בחר פעולה:</label>
+<select name="actions" id="actions">
+    <option value="newffile">פתח תיק חדש</option>
+    <option value="closefile">סגור תיק קיים</option>
+</select>
+
+
+<input type="submit" value="בצע">
+</form>
+
+<form action="" method="post">
+    {% csrf_token %}
+  <label for="team_name">הכנס שם: </label>
+  <input
+    id="team_name"
+    type="text"
+    name="name_field"
+    value="שם הקבוצה" />
+  <input type="submit" value="שלח" />
+</form>
+
+<a href="/snslaw/tadfile/{{ myclient.id}}">הוסף תיק תד חדש</a>
+
+{% endblock content %}
+</div>

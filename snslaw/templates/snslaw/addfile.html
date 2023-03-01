@@ -1,0 +1,26 @@
+{% extends 'basesns.html' %}
+{% load static %}
+{% block title %}פתיחת תיק ללקוח{% endblock title %}
+
+{% block content %}
+<h1>הוספת תיק חדש: {{ myclient }}</h1>
+
+{% if submitted %}
+    <p class="success">
+       התיק נוסף בהצלחה
+    </p>
+{% else %}
+    <form action="" method="post" novalidate>
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td>&nbsp</td>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+    {% csrf_token %}
+    </form>
+{% endif %}
+
+{% endblock content %}
+

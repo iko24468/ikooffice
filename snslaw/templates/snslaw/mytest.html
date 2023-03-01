@@ -1,0 +1,29 @@
+{% extends 'basesns.html' %}
+{% load static %}
+
+{% block title %}כותרת נסיונות{% endblock title %}
+
+{% block content %}
+<p>נסיונות</p>
+{{ person }}
+{% for bls in item_list %}
+   <p>
+       {{ current_date }} {{ bls }} {{ forloop.counter }}
+   </p>
+{% endfor %}
+<a href="/India/Maharashtra/Pune"> Pune</a><br>
+{{ country }}mfmmfmfmf {{ key_a }}
+
+<form action="search" method="get">
+  <input name="id" type="text" placeholder="זהות">
+  <input name="name" type="text" placeholder="name...">
+  <input name="age" type="text" placeholder="age...">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<input name="popo" type="date" placeholder="תאריך">
+
+{% url 'snslaw:detail' 1 as my_url %}
+<a href="{{ my_url }}">נסה אותי</a>
+
+{% endblock content %}

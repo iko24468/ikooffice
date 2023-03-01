@@ -1,0 +1,15 @@
+
+<html dir="rtl" lang="he">
+<h1>חישוב אקטוארי</h1>
+{% block content %}
+
+<h1>הזן נתונים</h1>
+<form action="multi" method="POST">
+    {% csrf_token %}
+    Enter sum: <input type="text" name="sum"><br><br>
+    Enter schat percent: <input type="text" name="schat_percent"><br><br>
+    <input type="submit">
+</form>
+
+
+{% endblock %}

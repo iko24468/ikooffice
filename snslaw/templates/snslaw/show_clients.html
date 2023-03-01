@@ -1,0 +1,85 @@
+{% extends 'basesns.html' %}
+{% load static %}
+<title>רשימת לקוחות</title>
+
+{% block title %}רשימת לקוחות{% endblock title %}
+
+{% block content %}
+<h1>בחר לקוח לביצוע פעולה</h1>
+<h2>לפתיחת תיק חדש לחץ על מספר לקוח. לעדכון פרטים לחץ על מספר תעודת הזהות</h2>
+<h3>רק לשם הבדיקה יופיע פה שם: {{ testclient|linebreaksbr }}</h3>
+
+{% if submitted %}
+    <p class="success">
+        לקוח חדש: {{ clnt.last_name }} {{ clnt.first_name }} נוסף בהצלחה
+    </p>
+{% endif %}
+
+<div class="table">
+
+
+<table border="1">
+    <tr>
+       <th><input name="q" type="text" placeholder="חיפוש" size="5"></th>
+        <th><input name="q" type="text" placeholder="חיפוש" size="10"></th>
+        <th><input name="q" type="text" placeholder="חיפוש" size="15"></th>
+
+    </tr>
+    <tr>
+        <th>מספר לקוח</th>
+        <th>תעודת זהות</th>
+        <th>שם משפחה</th>
+        <th>שם פרטי</th>
+        <th>טלפון 1</th>
+        <th>טלפון 2</th>
+        <th>תאריך לידה</th>
+        <th>כתובת</th>
+        <th>קופת חולים</th>
+        <th>דוא"ל</th>
+        <th>מגדר</th>
+        <th>פרטים</th>
+        <th>עדכון</th>
+        <th>מחק</th>
+  </tr>
+
+
+{% for clnt in client_list %}
+<tr>
+<td><a href="client_detail/{{ clnt.id }}">{{ clnt.id }}</a></td>
+<td><a href="update/{{ clnt.id }}">{{ clnt.id_number }}</a></td>
+<td>{{ clnt.last_name }}</td>
+<td>{{ clnt.first_name }}</td>
+<td>{{ clnt.phone1_prefix }}-{{ clnt.phone1 }}</td>
+<td>{{ clnt.phone2_prefix }}-{{ clnt.phone2 }}</td>
+<td>{{ clnt.birth_date|date:"d/m/Y" }}</td>
+<td> {{ clnt.address_street }} {{ clnt.address_number }}, {{ clnt.address_city }}, תד {{ clnt.address_pob }} מיקוד
+    {{ clnt.address_zip }} </td>
+<td>{{ clnt.kupa }}</td>
+<td>{{ clnt.mail }}</td>
+<td>{{ clnt.gender }}</td>
+<td><a href="client_detail/{{ clnt.id }}">פרטים</a></td>
+<td><a href="update/{{ clnt.id }}">עדכן </a></td>
+<td><a href="/snslaw/delete_record/{{ clnt.id }}">מחק</a>
+</tr>
+
+
+
+{% endfor %}
+</table>
+
+    <label for="site-search">אתר לקוח:</label>
+    <input type="search" id="site-search" name="q">
+
+    <button>חיפוש</button>
+    <label for="cars">Choose a car:</label>
+    <select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+
+
+<div class="link1"> <a href="/snslaw/">חזרה לדף הראשי</a></div>
+{% endblock content %}
+</div>

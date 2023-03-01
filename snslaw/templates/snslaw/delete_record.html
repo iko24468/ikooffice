@@ -1,0 +1,8 @@
+{% extends 'basesns.html' %}
+{% load static %}
+{% block title %}מחיקת לקוח{% endblock title %}
+
+{% block content %}
+<h1> הלקוח {{ myclient }} נמחק</h1>
+<a href="{% url 'snslaw:show' %}">חזרה לרשימת לקוחות</a>
+{% endblock content %}
