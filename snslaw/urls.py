@@ -13,6 +13,7 @@ app_name = 'snslaw'
 
 urlpatterns = [path('', views.index, name='snsindex'),
                path('multi/', views.calculate, name='multi'),
+               path('file_open/', views.file_open, name='fo'),
                path('add_record/', views.addrecord, name='addrecord'),
                path('mynewfile/', views.mynewfile, name='mnf'),
                path('show_clients/', views.show_clients, name='show'),

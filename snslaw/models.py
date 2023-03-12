@@ -77,13 +77,12 @@ class MyClient(models.Model):
         ("צה\"ל", "צה\"ל"),
     )
 
-    # default_birth_date = (datetime.date.today() - datetime.timedelta(30 * 360)).strftime('%Y-%m-%d')
-
+    default_birth_date = (datetime.date.today() - datetime.timedelta(30 * 360))
     id_number = models.CharField('תעודת זהות', max_length=10, unique=True)
     first_name = models.CharField('שם משפחה', max_length=20)
     last_name = models.CharField('שם פרטי', max_length=20)
-    # birth_date = models.DateField('תאריך לידה', default=default_birth_date)
-    birth_date = models.DateField('תאריך לידה')
+    birth_date = models.DateField('תאריך לידה', default=default_birth_date)
+    # birth_date = models.DateField('תאריך לידה')
     gender = models.CharField(
         'מין',
         max_length=10,

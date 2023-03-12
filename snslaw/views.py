@@ -9,11 +9,16 @@ from datetime import date, datetime
 from .models import MyClient, PhonePrefix, Publisher, ClientFiles
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
+from django.http import FileResponse
+
 
 
 def index(request):
     return render(request, "snslaw/index.html")
 
+
+def file_open(request):
+    return FileResponse(open(r"d:\degree.pdf", 'rb'))
 
 def addrecord(request):
     submitted = False
@@ -62,8 +67,6 @@ def calculate(request):
 
     # }
     return render(request, "result.html", {"result": res})
-
-
 
 
 def mynewfile (request):
@@ -144,7 +147,8 @@ def addfile(request, id):
 
 
 def show_clients(request):
-    client_list = MyClient.objects.all().values()  # כל הרשומות
+    # client_list = MyClient.objects.all().values()  # כל הרשומות
+    client_list = MyClient.objects.filter(first_name__contains="א")  # רשומות המכילות א
 
     template = loader.get_template('snslaw/show_clients.html')
     context = {
